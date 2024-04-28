@@ -4,14 +4,16 @@ import { FaMoon } from "react-icons/fa";
 import { CiSun } from "react-icons/ci";
 
 const ToggleTheme = () => {
-    const [theme, setTheme] = useState("dark");
+    const [theme, setTheme] = useState(window.localStorage.getItem("toggle-theme") || "light");
 
     const handleToggleTheme = () => {
         console.log("clicked");
         if (theme === "dark") {
             setTheme("light");
+            window.localStorage.setItem("toggle-theme", "light");
         } else if (theme === "light") {
             setTheme("dark");
+            window.localStorage.setItem("toggle-theme", "dark");
         }
     };
 
