@@ -1,3 +1,9 @@
+
+![image](https://github.com/a2rp/light-dark-theme-toggle/assets/5670738/dc97eb6d-2509-4a90-8caf-3d45b118ab88)
+
+![image](https://github.com/a2rp/light-dark-theme-toggle/assets/5670738/8256dc59-a71b-4844-8378-ad49b1d5f124)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
