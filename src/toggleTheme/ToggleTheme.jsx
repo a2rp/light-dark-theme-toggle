@@ -5,11 +5,28 @@ import styles from "./styles.module.scss";
 
 const STORAGE_KEY = "toggle-theme";
 
+const getStoredTheme = () => {
+  try {
+    const savedTheme = window.localStorage.getItem(STORAGE_KEY);
+    return savedTheme === "dark" || savedTheme === "light" ? savedTheme : "light";
+  } catch {
+    return "light";
+  }
+};
+
+const storeTheme = (theme) => {
+  try {
+    window.localStorage.setItem(STORAGE_KEY, theme);
+  } catch {
+    // The toggle still works for this page even when storage is unavailable.
+  }
+};
+
 const ToggleTheme = () => {
-  const [theme, setTheme] = useState(() => window.localStorage.getItem(STORAGE_KEY) || "light");
+  const [theme, setTheme] = useState(getStoredTheme);
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, theme);
+    storeTheme(theme);
   }, [theme]);
 
   const handleToggleTheme = () => {
@@ -27,7 +44,7 @@ const ToggleTheme = () => {
         <div>
           <p className={styles.demoLabel}>Current theme</p>
           <h3>{isDark ? "Dark mode" : "Light mode"}</h3>
-          <p className={styles.demoDescription}>Stored in your browser for the next visit.</p>
+          <p className={styles.demoDescription}>Stored in your browser for the next visit when storage is available.</p>
         </div>
         <button className={styles.toggleButton} type="button" onClick={handleToggleTheme} aria-pressed={isDark}>
           {isDark ? <FiSun aria-hidden="true" /> : <FiMoon aria-hidden="true" />}

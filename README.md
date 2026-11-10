@@ -18,7 +18,7 @@ React, Create React App, Sass, SCSS modules and React Icons.
 
 ## Run locally
 
-    npm install
+    npm ci
     npm start
 
 Create a production build with npm run build.
